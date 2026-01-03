@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <title>Alma | Advanced Dermatology Lasers</title>
+
+  <style>
+    :root {
+      --primary: #0f4c5c;
+      --secondary: #eaeaea;
+      --accent: #c89b3c;
+      --dark: #111;
+      --light: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Sour Gummy", sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: var(--dark);
+    }
+
+    section {
+      padding: 5rem 8%;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 900px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #111;
+      transition: color 0.25s ease;
+    }
+
+    a:hover {
+      color: purple;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('BG.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: var(--light);
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      max-width: 700px;
+    }
+
+    .hero-content p {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* BRAND STORY */
+    .story {
+      background: var(--secondary);
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      padding: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: var(--light);
+      opacity: 0.6;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .card:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* RESULTS */
+    .results {
+      background: #f8f8f8;
+    }
+
+    /* SPLIT */
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: var(--light);
+      padding: 1rem 8%;
+    }
+
+    footer p {
+      opacity: 0.8;
+    }
+
+    .social {
+      width: 30px;
+    }
+
+    .drugi {
+      background-color: #111;
+      padding: 3rem 8%;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO (no reveal) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Precision Laser Technology for Modern Dermatology</h1>
+      <p>Engineered for performance. Trusted by dermatologists worldwide.</p>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="story reveal">
+    <h2>Our Story</h2>
+    <p>
+      Alma was founded with a single mission: to elevate dermatological care
+      through scientifically driven laser technology.
+    </p>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="reveal">
+    <h2>Our Products</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Alma Hybrid</h3>
+        <p>Super extra laser.</p>
+      </div>
+      <div class="card">
+        <h3>Alma Soprano Titanium</h3>
+        <p>Titanium bajo.</p>
+      </div>
+      <div class="card">
+        <h3>CO<sub>2</sub></h3>
+        <p>Powerful CO<sub>2</sub> laser for deep skin resurfacing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SHOWCASE -->
+  <section class="reveal">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <img src="https://juvelook.com/wp-content/uploads/2023/08/쥬베룩.svg"
+           style="height:60px; margin:1rem 1.5rem;" />
+      <img src="https://juvelook.com/wp-content/uploads/2023/08/레지나.svg"
+           style="height:60px; margin:1rem 1.5rem;" />
+    </div>
+
+    <div style="display:flex; justify-content:center;">
+      <video autoplay muted loop playsinline
+             style="max-width:900px; width:100%; border-radius:8px;">
+        <source src="https://forexcom13.cafe24.com/wp-content/uploads/2023/08/P.8-Juvelook_EN_A-v2-1.mp4"
+                type="video/mp4" />
+      </video>
+    </div>
+  </section>
+
+  <!-- INDICATIONS -->
+  <section class="reveal">
+    <h2>Indications & Treatment Areas</h2>
+    <div class="grid">
+      <div class="card">Acne & Acne Scars</div>
+      <div class="card">Pigmentation</div>
+      <div class="card">Vascular Lesions</div>
+      <div class="card">Skin Rejuvenation</div>
+      <div class="card">Scar Revision</div>
+      <div class="card">Hair Reduction</div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results reveal">
+    <h2>Results & Real Cases</h2>
+    <p>
+      Backed by clinical data and real-world case studies from leading clinics.
+    </p>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="reveal">
+    <h2>Education Hub</h2>
+    <div class="grid">
+      <div class="card">
+        <h3><a href="#">Clinical Protocols</a></h3>
+        <p>Evidence-based treatment guidelines.</p>
+      </div>
+      <div class="card">
+        <h3><a href="#">Workshops & Webinars</a></h3>
+        <p>Hands-on and online education.</p>
+      </div>
+      <div class="card">
+        <h3><a href="#">Research & Publications</a></h3>
+        <p>Peer-reviewed studies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS / PATIENTS -->
+  <section class="reveal">
+    <div class="split">
+      <div>
+        <h2><a href="#">For Doctors</a></h2>
+        <p>Clinical resources and training.</p>
+      </div>
+      <div>
+        <h2><a href="#">For Patients</a></h2>
+        <p>Treatment education and safety info.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTERS -->
+  <footer class="drugi">
+    <p>Email: #</p>
+    <p>Phone: #</p>
+    <p>
+      <a href="#"><img class="social" src="IG.png"></a>
+      <a href="#"><img class="social" src="FB.png"></a>
+      <a href="#"><img class="social" src="YT.png"></a>
+    </p>
+  </footer>
+
+  <footer>
+    <p>&copy; 2026 Alma. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      reveals.forEach(section => observer.observe(section));
+    });
+  </script>
+
+</body>
+</html>
