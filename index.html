@@ -29,6 +29,8 @@
     body {
       line-height: 1.6;
       color: var(--dark);
+      align-items: center;
+      justify-content: center;
     }
 
     section {
@@ -145,6 +147,80 @@
       transform: translateY(0);
     }
 
+
+
+
+
+    .container img{
+      width: 500px;
+      height: 600px;
+      object-fit: cover;
+    }
+    .container{
+      position: relative;
+      width: 500px;
+      height: 600px;
+      overflow: hidden;
+    }
+    .img-before{
+      position: absolute;
+      width: 500px;
+      height: 600px;
+      overflow: hidden;
+      top:0;
+      left: 0;
+      z-index: 2;
+    }
+    .line{
+      width: 3px;
+      height: 100%;
+      background-color: blue;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      pointer-events: none;         
+    }
+    .container,
+    .container * {
+      user-select: none;
+      -webkit-user-drag: none;
+      touch-action: none;
+    }
+
+    img {
+      pointer-events: none;
+      width: 100%;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      user-select: none;
+      touch-action: none;
+      border-radius: 5px;
+      margin-top: 30px;
+
+
+    }
+
+    .img-after,
+    .img-before {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+
+    }
+    .slider-wrapper{
+      display: flex;
+      justify-content: center; /* horizontal */
+      align-items: center;     /* vertical */
+      padding: 4rem 1rem;
+    }
+
+
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.2rem;
@@ -224,11 +300,24 @@
 
   <!-- RESULTS -->
   <section class="results reveal">
-    <h2>Results & Real Cases</h2>
-    <p>
-      Backed by clinical data and real-world case studies from leading clinics.
-    </p>
-  </section>
+  <h2>Results & Real Cases</h2>
+  <p>
+    Backed by clinical data and real-world case studies from leading clinics.
+  </p>
+</section>
+
+<!-- Before / After Slider -->
+ <div class="slider-wrapper">
+  <div class="container">
+            <div class="img-before">
+                <img src="https://juvelook.com/wp-content/uploads/2023/09/KakaoTalk_20230901_160923217-2-1.png" alt="Before">
+            </div>
+            <div class="img-after">
+                <img src="https://juvelook.com/wp-content/uploads/2023/09/KakaoTalk_20230901_160923217-1-1.png" alt="After">
+            </div>
+            <div class="line"></div>
+        </div>
+  </div>
 
   <!-- EDUCATION -->
   <section class="reveal">
@@ -279,6 +368,7 @@
   </footer>
 
   <script>
+    //LOAD
     document.addEventListener('DOMContentLoaded', () => {
       const reveals = document.querySelectorAll('.reveal');
 
@@ -294,6 +384,47 @@
       );
 
       reveals.forEach(section => observer.observe(section));
+    });
+    
+    //Slider
+     const container = document.querySelector('.container');
+    const imgBefore = document.querySelector('.img-before');
+    const line = document.querySelector('.line');
+    const images = container.querySelectorAll('img');
+
+    let isDragging = false;
+
+    // Wait for all images
+    Promise.all([...images].map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(res => img.onload = res);
+    })).then(() => {
+        const rect = container.getBoundingClientRect();
+        const middle = rect.width / 2;
+
+        imgBefore.style.width = `${middle}px`;
+        line.style.left = `${middle}px`;
+    });
+
+    container.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        container.setPointerCapture(e.pointerId);
+    });
+
+    container.addEventListener('pointerup', () => isDragging = false);
+    container.addEventListener('pointerleave', () => isDragging = false);
+
+    container.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+
+        e.preventDefault();
+        const rect = container.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+
+        x = Math.max(0, Math.min(x, rect.width));
+
+        imgBefore.style.width = `${x}px`;
+        line.style.left = `${x}px`;
     });
   </script>
 
