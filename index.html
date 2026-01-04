@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-  <title>Alma | Advanced Dermatology Lasers</title>
+  <link rel="icon" type="image/png" href="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg">
+  <title>Juvelook & Lesina </title>
 
   <style>
     :root {
@@ -31,6 +31,45 @@
       color: var(--dark);
       align-items: center;
       justify-content: center;
+    }
+
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      width: 180px;
+    }
+
+    .logo-outline {
+      width: 100%;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .logo-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: #0f4c5c;
+      mask-image: url("https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg");
+      -webkit-mask-image: url("https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      transition: height 0.25s ease;
     }
 
     section {
@@ -70,16 +109,18 @@
       align-items: center;
       z-index: 1000;
       background: transparent;
+      transform: scale(1.10);
       transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
       color: white;
 
     }
+    
 
     .navbar.scrolled {
       background: white;
       color: #111;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transform: scaleX(1.05)
+      transform: scaleX(1.00)
     }
 
     .navbar a {
@@ -353,24 +394,59 @@
       margin-right: auto;
     }
 
-
-    
-    
-
-
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.2rem;
       }
     }
+    
+    .navbar img {
+      height: 34px;
+      width: auto;
+      max-width: 160px;
+    }
+
+
+    @media (max-width: 768px) {
+      .navbar {
+        height: 64px;
+        padding: 1rem 6%;
+        transform: none !important;
+      }
+
+      .navbar.scrolled {
+        transform: none !important;
+      }
+
+      .navbar img {
+        height: 28px;
+        max-width: 120px;
+      }
+    }
+
+#loader {
+  transition: opacity 0.6s ease;
+}
+
+
+
   </style>
 </head>
 
 <body>
 
+  <div id="loader">
+  <div class="logo-wrapper">
+    <img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg" class="logo-outline">
+    <div class="logo-fill"></div>
+  </div>
+</div>
+
+
+
   <!-- NAVBAR -->
 <nav class="navbar">
-  <strong>Juvelook</strong>
+  <strong><img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg"></strong>
 
   <div class="nav-links">
     <a href="#">Products</a>
@@ -478,7 +554,7 @@
   
 
   <!-- GLOBAL NETWORK -->
-  <section class="global-network reveal">
+  <section class="global-network">
     <h2>Наша глобална мрежа</h2>
     <p>
       Juvelook и Lenisna нису само изузетно популарни у Јужној Кореји, већ су и потписали уговоре са преко 72 земље широм света.
@@ -584,6 +660,60 @@ overlay.addEventListener('click', () => {
   sidebar.classList.remove('open');
   overlay.classList.remove('active');
 });
+
+
+
+/* LOADER */
+(() => {
+  const loader = document.getElementById("loader");
+  const fill = document.querySelector(".logo-fill");
+
+  if (!loader || !fill) return;
+
+  const assets = [
+    ...document.images,
+    ...document.querySelectorAll("video"),
+    ...document.querySelectorAll("link[rel='stylesheet']")
+  ];
+
+  let loaded = 0;
+  const total = Math.max(assets.length, 1);
+
+  const update = () => {
+    loaded++;
+    const percent = Math.min((loaded / total) * 100, 100);
+    fill.style.height = percent + "%";
+  };
+
+  assets.forEach(asset => {
+    if (
+      asset.complete ||
+      asset.readyState === 4 ||
+      asset.readyState === "complete"
+    ) {
+      update();
+    } else {
+      asset.addEventListener("load", update, { once: true });
+      asset.addEventListener("error", update, { once: true });
+    }
+  });
+
+  /* FINAL GUARANTEE — remove loader when EVERYTHING is ready */
+  window.addEventListener("load", () => {
+    fill.style.height = "100%";
+
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+      loader.style.transition = "opacity 0.6s ease";
+
+      setTimeout(() => loader.remove(), 700);
+    }, 300);
+  });
+})();
+
+
+
   </script>
 
 </body>
