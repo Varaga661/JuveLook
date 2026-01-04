@@ -56,7 +56,105 @@
       color: purple;
     }
 
-    /* HERO */
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: transparent;
+      transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
+      color: white;
+
+    }
+
+    .navbar.scrolled {
+      background: white;
+      color: #111;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transform: scaleX(1.05)
+    }
+
+    .navbar a {
+      margin-left: 2rem;
+      font-weight: 500;
+      color: white;
+    }
+
+
+    .navbar.scrolled a {
+      color: #111;
+    }
+
+    /* ================= MOBILE NAV ================= */
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 260px;
+      height: 100vh;
+      background: white;
+      padding: 5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: right 0.35s ease;
+      z-index: 2000;
+    }
+
+    .sidebar a {
+      font-size: 1.1rem;
+      color: #111;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 1500;
+    }
+
+    /* Active states */
+    .sidebar.open {
+      right: 0;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+      display: none;
+      }
+
+    .hamburger {
+      display: block;
+      }
+    }
+
+
     .hero {
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
@@ -103,19 +201,19 @@
       transform: scale(1.05);
     }
 
-    /* RESULTS */
+
     .results {
       background: #f8f8f8;
     }
 
-    /* SPLIT */
+
     .split {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 3rem;
     }
 
-    /* FOOTER */
+
     footer {
       background: #222;
       color: var(--light);
@@ -135,7 +233,7 @@
       padding: 3rem 8%;
     }
 
-    /* SCROLL REVEAL */
+
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -215,14 +313,49 @@
     }
     .slider-wrapper{
       display: flex;
-      justify-content: center; /* horizontal */
-      align-items: center;     /* vertical */
+      justify-content: center; 
+      align-items: center;     
       padding: 4rem 1rem;
     }
     .vid-wrapper img{
       width: 300px;
       margin-right: 25px;
     }
+    .before-after{
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      user-select: none;
+      touch-action: none;
+      border-radius: 5px;
+      margin-top: 30px;
+      margin-right: 40px;
+    }
+    .before-after img{
+      width: 100%;
+      height: 100%;
+    }
+    .global-network{
+      background-color: #f5f8fb;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .global-network img{
+      height: 70%;
+      width: 70%;
+      display: block;
+      height: auto;
+      margin: 2rem auto 0;
+    }
+    .global-network p {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    
+    
 
 
     @media (max-width: 768px) {
@@ -235,22 +368,42 @@
 
 <body>
 
+  <!-- NAVBAR -->
+<nav class="navbar">
+  <strong>Juvelook</strong>
+
+  <div class="nav-links">
+    <a href="#">Products</a>
+    <a href="#">Results</a>
+    <a href="#">Education</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
+</nav>
+
+<!-- Mobile Sidebar -->
+<div class="sidebar" id="sidebar">
+  <a href="#">Products</a>
+  <a href="#">Results</a>
+  <a href="#">Education</a>
+  <a href="#">Contact</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+
   <!-- HERO (no reveal) -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Precision Laser Technology for Modern Dermatology</h1>
-      <p>Engineered for performance. Trusted by dermatologists worldwide.</p>
+      <h1>Напредни хибридни биостимулатори</h1>
+      <p>Poly-D, L-LACTIC ACID+HYALURONIC ACID(PDLLA+HA).</p>
     </div>
   </section>
 
-  <!-- BRAND STORY -->
-  <section class="story reveal">
-    <h2>Our Story</h2>
-    <p>
-      Alma was founded with a single mission: to elevate dermatological care
-      through scientifically driven laser technology.
-    </p>
-  </section>
+
 
   <!-- PRODUCTS -->
   <section class="reveal">
@@ -302,16 +455,13 @@
     </div>
   </section>
 
-  <!-- RESULTS -->
-  <section class="results reveal">
-  <h2>Results & Real Cases</h2>
-  <p>
-    Backed by clinical data and real-world case studies from leading clinics.
-  </p>
-</section>
+
 
 <!-- Before / After Slider -->
  <div class="slider-wrapper">
+  <div class="before-after">    
+    <img src="before-after.png">
+  </div>
   <div class="container">
             <div class="img-before">
                 <img src="https://juvelook.com/wp-content/uploads/2023/09/KakaoTalk_20230901_160923217-2-1.png" alt="Before">
@@ -323,43 +473,25 @@
         </div>
   </div>
 
-  <!-- EDUCATION -->
-  <section class="reveal">
-    <h2>Education Hub</h2>
-    <div class="grid">
-      <div class="card">
-        <h3><a href="#">Clinical Protocols</a></h3>
-        <p>Evidence-based treatment guidelines.</p>
-      </div>
-      <div class="card">
-        <h3><a href="#">Workshops & Webinars</a></h3>
-        <p>Hands-on and online education.</p>
-      </div>
-      <div class="card">
-        <h3><a href="#">Research & Publications</a></h3>
-        <p>Peer-reviewed studies.</p>
-      </div>
-    </div>
-  </section>
+  
 
-  <!-- DOCTORS / PATIENTS -->
-  <section class="reveal">
-    <div class="split">
-      <div>
-        <h2><a href="#">For Doctors</a></h2>
-        <p>Clinical resources and training.</p>
-      </div>
-      <div>
-        <h2><a href="#">For Patients</a></h2>
-        <p>Treatment education and safety info.</p>
-      </div>
-    </div>
+  
+
+  <!-- GLOBAL NETWORK -->
+  <section class="global-network reveal">
+    <h2>Наша глобална мрежа</h2>
+    <p>
+      Juvelook и Lenisna нису само изузетно популарни у Јужној Кореји, већ су и потписали уговоре са преко 72 земље широм света.
+Сада активно ширимо наше пословно подручје и наставићемо да промовишемо висококвалитетне био-стимулаторе.
+    </p>
+    <img src="network.png" alt="Global Network Map">
   </section>
+  
 
   <!-- FOOTERS -->
   <footer class="drugi">
-    <p>Email: #</p>
-    <p>Phone: #</p>
+    <p>Е-Пошта: #</p>
+    <p>Телефон: #</p>
     <p>
       <a href="#"><img class="social" src="IG.png"></a>
       <a href="#"><img class="social" src="FB.png"></a>
@@ -368,11 +500,11 @@
   </footer>
 
   <footer>
-    <p>&copy; 2026 Alma. All rights reserved.</p>
+    <p>&copy; 2026 Juvelook. All rights reserved.</p>
   </footer>
 
   <script>
-    //LOAD
+
     document.addEventListener('DOMContentLoaded', () => {
       const reveals = document.querySelectorAll('.reveal');
 
@@ -390,7 +522,7 @@
       reveals.forEach(section => observer.observe(section));
     });
     
-    //Slider
+//Slider
      const container = document.querySelector('.container');
     const imgBefore = document.querySelector('.img-before');
     const line = document.querySelector('.line');
@@ -398,7 +530,6 @@
 
     let isDragging = false;
 
-    // Wait for all images
     Promise.all([...images].map(img => {
         if (img.complete) return Promise.resolve();
         return new Promise(res => img.onload = res);
@@ -430,6 +561,29 @@
         imgBefore.style.width = `${x}px`;
         line.style.left = `${x}px`;
     });
+
+    /* Navbar scroll */
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+
+hamburger.addEventListener('click', () => {
+  sidebar.classList.add('open');
+  overlay.classList.add('active');
+});
+
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+});
   </script>
 
 </body>
