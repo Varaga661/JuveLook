@@ -9,8 +9,10 @@
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: "Sour Gummy", sans-serif;
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
     }
 
     body {
@@ -18,13 +20,14 @@
       color: var(--dark);
       align-items: center;
       justify-content: center;
+      background-color: #fbfbfd;
     }
 
 
     #loader {
       position: fixed;
       inset: 0;
-      background: #fff;
+      background: #fbfbfd;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -96,12 +99,13 @@
       transform: scale(1.10);
       transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
       color: white;
+      
 
     }
     
 
     .navbar.scrolled {
-      background: white;
+      background: #fbfbfd;
       color: #111;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       transform: scaleX(1.00)
@@ -532,3 +536,92 @@
           background: #000;
         }
       }
+
+      /* ===============================
+   PRODUCTS – IMAGE + TEXT LAYOUT
+   =============================== */
+
+.products-alt {
+  padding: 5rem 8%;
+}
+
+.product-row {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+.product-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.product-text {
+  flex: 1;
+}
+
+.product-text h3 {
+  margin-bottom: 1rem;
+}
+
+.product-text p {
+  max-width: 500px;
+}
+
+.product-image {
+  flex: 1;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .product-row,
+  .product-row.reverse {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .product-text p {
+    max-width: 100%;
+  }
+}
+
+/* Bigger product title */
+.product-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Button styling */
+.product-btn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid aliceblue;
+  background-color:aliceblue;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-btn:hover {
+  background-color:#EDF2F7;
+  color: black;
+}
+.product-text {
+  text-align: center;
+}
+
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+  .product-title {
+    font-size: 1.9rem;
+  }
+}
+
