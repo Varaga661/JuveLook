@@ -4,440 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  
+  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg">
+  <link rel="icon" type="image/png" href="Logo.svg">
   <title>Juvelook & Lesina </title>
 
-  <style>
-    :root {
-      --primary: #0f4c5c;
-      --secondary: #eaeaea;
-      --accent: #c89b3c;
-      --dark: #111;
-      --light: #fff;
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Sour Gummy", sans-serif;
-    }
-
-    body {
-      line-height: 1.6;
-      color: var(--dark);
-      align-items: center;
-      justify-content: center;
-    }
-
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .logo-wrapper {
-      position: relative;
-      width: 180px;
-    }
-
-    .logo-outline {
-      width: 100%;
-      display: block;
-      position: relative;
-      z-index: 2;
-    }
-
-
-    .logo-fill {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0%;
-      background: #0f4c5c;
-      mask-image: url("https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg");
-      -webkit-mask-image: url("https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg");
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      transition: height 0.25s ease;
-    }
-
-    section {
-      padding: 5rem 8%;
-    }
-
-    h1, h2, h3 {
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      max-width: 900px;
-    }
-
-    a {
-      text-decoration: none;
-      color: #111;
-      transition: color 0.25s ease;
-    }
-
-    a:hover {
-      color: purple;
-    }
-
-
-    /* ================= NAVBAR ================= */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.2rem 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      background: transparent;
-      transform: scale(1.10);
-      transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
-      color: white;
-
-    }
-    
-
-    .navbar.scrolled {
-      background: white;
-      color: #111;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transform: scaleX(1.00)
-    }
-
-    .navbar a {
-      margin-left: 2rem;
-      font-weight: 500;
-      color: white;
-    }
-
-
-    .navbar.scrolled a {
-      color: #111;
-    }
-
-    /* ================= MOBILE NAV ================= */
-
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 260px;
-      height: 100vh;
-      background: white;
-      padding: 5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      transition: right 0.35s ease;
-      z-index: 2000;
-    }
-
-    .sidebar a {
-      font-size: 1.1rem;
-      color: #111;
-    }
-
-    /* Overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
-      z-index: 1500;
-    }
-
-    /* Active states */
-    .sidebar.open {
-      right: 0;
-    }
-
-    .overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-      display: none;
-      }
-
-    .hamburger {
-      display: block;
-      }
-    }
-
-
-    .hero {
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url('BG.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      color: var(--light);
-    }
-
-    .hero-content h1 {
-      font-size: 3rem;
-      max-width: 700px;
-    }
-
-    .hero-content p {
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-    }
-
-    /* BRAND STORY */
-    .story {
-      background: var(--secondary);
-    }
-
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .card {
-      padding: 2rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      background: var(--light);
-      opacity: 0.6;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .card:hover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-
-    .results {
-      background: #f8f8f8;
-    }
-
-
-    .split {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-    }
-
-
-    footer {
-      background: #222;
-      color: var(--light);
-      padding: 1rem 8%;
-    }
-
-    footer p {
-      opacity: 0.8;
-    }
-
-    .social {
-      width: 30px;
-    }
-
-    .drugi {
-      background-color: #111;
-      padding: 3rem 8%;
-    }
-
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-
-
-
-    .container img{
-      width: 500px;
-      height: 600px;
-      object-fit: cover;
-    }
-    .container{
-      position: relative;
-      width: 500px;
-      height: 600px;
-      overflow: hidden;
-    }
-    .img-before{
-      position: absolute;
-      width: 500px;
-      height: 600px;
-      overflow: hidden;
-      top:0;
-      left: 0;
-      z-index: 2;
-    }
-    .line{
-      width: 3px;
-      height: 100%;
-      background-color: blue;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      pointer-events: none;         
-    }
-    .container,
-    .container * {
-      user-select: none;
-      -webkit-user-drag: none;
-      touch-action: none;
-    }
-
-    img {
-      pointer-events: none;
-      width: 100%;
-    }
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      user-select: none;
-      touch-action: none;
-      border-radius: 5px;
-      margin-top: 30px;
-
-
-    }
-
-    .img-after,
-    .img-before {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-
-    }
-    .slider-wrapper{
-      display: flex;
-      justify-content: center; 
-      align-items: center;     
-      padding: 4rem 1rem;
-    }
-    .vid-wrapper img{
-      width: 300px;
-      margin-right: 25px;
-    }
-    .before-after{
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      user-select: none;
-      touch-action: none;
-      border-radius: 5px;
-      margin-top: 30px;
-      margin-right: 40px;
-    }
-    .before-after img{
-      width: 100%;
-      height: 100%;
-    }
-    .global-network{
-      background-color: #f5f8fb;
-      text-align: center;
-      padding: 5rem 2rem;
-    }
-    .global-network img{
-      height: 70%;
-      width: 70%;
-      display: block;
-      height: auto;
-      margin: 2rem auto 0;
-    }
-    .global-network p {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-    }
-    
-    .navbar img {
-      height: 34px;
-      width: auto;
-      max-width: 160px;
-    }
-
-
-    @media (max-width: 768px) {
-      .navbar {
-        height: 64px;
-        padding: 1rem 6%;
-        transform: none !important;
-      }
-
-      .navbar.scrolled {
-        transform: none !important;
-      }
-
-      .navbar img {
-        height: 28px;
-        max-width: 120px;
-      }
-    }
-
-#loader {
-  transition: opacity 0.6s ease;
-}
-
-
-
-  </style>
-</head>
+  </head>
 
 <body>
 
   <div id="loader">
   <div class="logo-wrapper">
-    <img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg" class="logo-outline">
+    <img src="Logo.svg" class="logo-outline">
     <div class="logo-fill"></div>
   </div>
 </div>
@@ -446,13 +28,13 @@
 
   <!-- NAVBAR -->
 <nav class="navbar">
-  <strong><img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg"></strong>
+  <strong><a href="index.html"><img src="Logo.svg" alt="Logo"></a></strong>
 
   <div class="nav-links">
-    <a href="#">Products</a>
-    <a href="#">Results</a>
-    <a href="#">Education</a>
-    <a href="#">Contact</a>
+    <a href="indikacije.html">Indikacije</a>
+    <a href="rezultati.html">Rezultati</a>
+    <a href="bezbednost.html">Bezbednost</a>
+    <a href="tehnologija.html">Tehnologija</a>
   </div>
 
   <div class="hamburger" id="hamburger">
@@ -462,10 +44,10 @@
 
 <!-- Mobile Sidebar -->
 <div class="sidebar" id="sidebar">
-  <a href="#">Products</a>
-  <a href="#">Results</a>
-  <a href="#">Education</a>
-  <a href="#">Contact</a>
+  <a href="indikacije.html">Indikacije</a>
+  <a href="rezultati.html">Rezultati</a>
+  <a href="bezbednost.html">Bezbednost</a>
+  <a href="tehnologija.html">Tehnologija</a>
 </div>
 
 <div class="overlay" id="overlay"></div>
@@ -504,8 +86,8 @@
   <section class="reveal">
     <div class="vid-wrapper">
       <div style="text-align:center; margin-bottom:2rem;">
-        <img src="https://juvelook.com/wp-content/uploads/2023/08/쥬베룩.svg"/>
-        <img src="https://juvelook.com/wp-content/uploads/2023/08/레지나.svg"/>
+        <img src="Juvelook.svg"/>
+        <img src="Lenisna.svg"/>
       </div>
     </div>
 
@@ -535,18 +117,20 @@
 
 <!-- Before / After Slider -->
  <div class="slider-wrapper">
-  <div class="before-after">    
-    <img src="before-after.png">
-  </div>
   <div class="container">
             <div class="img-before">
-                <img src="https://juvelook.com/wp-content/uploads/2023/09/KakaoTalk_20230901_160923217-2-1.png" alt="Before">
+                <img src="before.png" alt="Before">
             </div>
             <div class="img-after">
-                <img src="https://juvelook.com/wp-content/uploads/2023/09/KakaoTalk_20230901_160923217-1-1.png" alt="After">
+                <img src="After.png" alt="After">
             </div>
             <div class="line"></div>
         </div>
+  </div>
+  <div class="slider-wrapper">
+    <div class="before-after">    
+      <img src="before-after.png">
+    </div>
   </div>
 
   
@@ -579,142 +163,7 @@
     <p>&copy; 2026 Juvelook. All rights reserved.</p>
   </footer>
 
-  <script>
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const reveals = document.querySelectorAll('.reveal');
-
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-
-      reveals.forEach(section => observer.observe(section));
-    });
-    
-//Slider
-     const container = document.querySelector('.container');
-    const imgBefore = document.querySelector('.img-before');
-    const line = document.querySelector('.line');
-    const images = container.querySelectorAll('img');
-
-    let isDragging = false;
-
-    Promise.all([...images].map(img => {
-        if (img.complete) return Promise.resolve();
-        return new Promise(res => img.onload = res);
-    })).then(() => {
-        const rect = container.getBoundingClientRect();
-        const middle = rect.width / 2;
-
-        imgBefore.style.width = `${middle}px`;
-        line.style.left = `${middle}px`;
-    });
-
-    container.addEventListener('pointerdown', (e) => {
-        isDragging = true;
-        container.setPointerCapture(e.pointerId);
-    });
-
-    container.addEventListener('pointerup', () => isDragging = false);
-    container.addEventListener('pointerleave', () => isDragging = false);
-
-    container.addEventListener('pointermove', (e) => {
-        if (!isDragging) return;
-
-        e.preventDefault();
-        const rect = container.getBoundingClientRect();
-        let x = e.clientX - rect.left;
-
-        x = Math.max(0, Math.min(x, rect.width));
-
-        imgBefore.style.width = `${x}px`;
-        line.style.left = `${x}px`;
-    });
-
-    /* Navbar scroll */
-  const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-  const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
-
-hamburger.addEventListener('click', () => {
-  sidebar.classList.add('open');
-  overlay.classList.add('active');
-});
-
-overlay.addEventListener('click', () => {
-  sidebar.classList.remove('open');
-  overlay.classList.remove('active');
-});
-
-
-
-/* LOADER */
-(() => {
-  const loader = document.getElementById("loader");
-  const fill = document.querySelector(".logo-fill");
-
-  if (!loader || !fill) return;
-
-  const assets = [
-    ...document.images,
-    ...document.querySelectorAll("video"),
-    ...document.querySelectorAll("link[rel='stylesheet']")
-  ];
-
-  let loaded = 0;
-  const total = Math.max(assets.length, 1);
-
-  const update = () => {
-    loaded++;
-    const percent = Math.min((loaded / total) * 100, 100);
-    fill.style.height = percent + "%";
-  };
-
-  assets.forEach(asset => {
-    if (
-      asset.complete ||
-      asset.readyState === 4 ||
-      asset.readyState === "complete"
-    ) {
-      update();
-    } else {
-      asset.addEventListener("load", update, { once: true });
-      asset.addEventListener("error", update, { once: true });
-    }
-  });
-
-  /* FINAL GUARANTEE — remove loader when EVERYTHING is ready */
-  window.addEventListener("load", () => {
-    fill.style.height = "100%";
-
-    setTimeout(() => {
-      loader.style.opacity = "0";
-      loader.style.pointerEvents = "none";
-      loader.style.transition = "opacity 0.6s ease";
-
-      setTimeout(() => loader.remove(), 700);
-    }, 300);
-  });
-})();
-
-
-
-  </script>
+  <script src="functions.js"></script>
 
 </body>
 </html>

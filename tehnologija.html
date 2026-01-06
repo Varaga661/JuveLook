@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg">
+  <title>Juvelook & Lesina </title>
+    </head>
+    <body>
+        <div id="loader">
+            <div class="logo-wrapper">
+                <img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg" class="logo-outline">
+                <div class="logo-fill"></div>
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+          <strong><a href="index.html"><img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg" alt="Logo"></a></strong>
+
+          <div class="nav-links">
+            <a href="indikacije.html">Indikacije</a>
+            <a href="rezultati.html">Rezultati</a>
+            <a href="bezbednost.html">Bezbednost</a>
+            <a href="tehnologija.html">Tehnologija</a>
+          </div>
+
+          <div class="hamburger" id="hamburger">☰</div>
+        </nav>
+
+        <!-- Mobile Sidebar -->
+        <div class="sidebar" id="sidebar">
+          <a href="indikacije.html">Indikacije</a>
+          <a href="rezultati.html">Rezultati</a>
+          <a href="bezbednost.html">Bezbednost</a>
+          <a href="tehnologija.html">Tehnologija</a>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+
+
+
+
+
+
+
+<script>
+/* LOADER */
+(() => {
+  const loader = document.getElementById("loader");
+  const fill = document.querySelector(".logo-fill");
+
+  // LOCK SCROLL IMMEDIATELY (even if loader fails)
+  document.documentElement.style.overflow = "hidden";
+  document.body.classList.add("loading");
+
+  if (!loader || !fill) {
+    // Safety unlock if loader markup is missing
+    window.addEventListener("load", () => {
+      document.documentElement.style.overflow = "";
+      document.body.classList.remove("loading");
+    });
+    return;
+  }
+
+  const assets = [
+    ...document.images,
+    ...document.querySelectorAll("video"),
+    ...document.querySelectorAll("link[rel='stylesheet']")
+  ];
+
+  let loaded = 0;
+  const total = Math.max(assets.length, 1);
+
+  fill.style.height = "0%";
+
+  function update() {
+    loaded++;
+    const percent = Math.min((loaded / total) * 100, 100);
+    fill.style.height = percent + "%";
+  }
+
+  assets.forEach(asset => {
+    if (
+      asset.complete ||
+      asset.readyState === 4 ||
+      asset.readyState === "complete"
+    ) {
+      setTimeout(update, 80);
+    } else {
+      asset.addEventListener("load", update, { once: true });
+      asset.addEventListener("error", update, { once: true });
+    }
+  });
+
+  // FINAL EXIT (authoritative)
+  window.addEventListener("load", () => {
+    fill.style.height = "100%";
+
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+
+      // UNLOCK SCROLL
+      document.documentElement.style.overflow = "";
+      document.body.classList.remove("loading");
+
+      setTimeout(() => loader.remove(), 700);
+    }, 400);
+  });
+})();</script>
+    </body>
+</html>
