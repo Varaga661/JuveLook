@@ -829,6 +829,9 @@
 
 
 
+
+
+
     /* ===============================
       MOBILE
       =============================== */
@@ -844,6 +847,16 @@
       }
 
       .feature-card {
+        padding: 40px 30px;
+      }
+    }
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        grid-column: auto !important;
         padding: 40px 30px;
       }
     }
