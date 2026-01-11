@@ -144,3 +144,81 @@ overlay.addEventListener('click', () => {
     }, 400);
   });
 })();
+
+
+  document.querySelectorAll('.sidebar-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const parent = toggle.parentElement;
+
+      // Close others
+      document.querySelectorAll('.sidebar-item').forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+
+      parent.classList.toggle('open');
+    });
+  });
+
+
+  const currentPage = location.pathname.split("/").pop();
+
+  document.querySelectorAll("a[href]").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
+
+
+document.addEventListener("click", function (e) {
+  const navItems = document.querySelectorAll(".nav-item");
+
+  navItems.forEach(item => {
+    const link = item.querySelector("a");
+
+    // Click on nav link
+    if (link && link.contains(e.target)) {
+      e.preventDefault();
+
+      // Close other dropdowns
+      navItems.forEach(i => {
+        if (i !== item) i.classList.remove("open");
+      });
+
+      // Toggle this one
+      item.classList.toggle("open");
+    }
+  });
+
+  // Click outside → close all
+  if (!e.target.closest(".nav-item")) {
+    navItems.forEach(item => item.classList.remove("open"));
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

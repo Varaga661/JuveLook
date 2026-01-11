@@ -33,11 +33,42 @@
   <img src="Logo.svg" class="logo logo-scrolled" alt="Logo dark">
 </div>
   <div class="nav-links">
-    <a href="index.html">Početna</a>
-    <a href="indikacije.html">Juvelook & Lenisna</a>
-    <a href="rezultati.html">Rezultati</a>
-    <a href="tehnologija.html">Tehnologija</a>
-  </div>
+            <a href="index.html">Početna</a>
+
+            <div class="nav-item">
+              <a href="#" class="nav-parent">
+                Juvelook & Lenisna
+                <span class="nav-arrow">▾</span>
+              </a>
+
+              <div class="dropdown">
+                <a href="indikacije.html">Juvelook</a>
+                <a href="lenisna.html">Lenisna</a>
+              </div>
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-parent">
+                Rezultati
+                <span class="nav-arrow">▾</span>
+              </a>
+
+              <div class="dropdown">
+                <a href="#">Juvelook</a>
+                <a href="#">Lenisna</a>
+              </div>
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-parent">
+                Tehnologija
+                <span class="nav-arrow">▾</span>
+              </a>
+
+              <div class="dropdown">
+                <a href="inovacija.html">Šta je PDLLA</a>
+                <a href="tehnologija.html">Naša tehnologija</a>
+              </div>
+            </div>
+          </div>
 
   <div class="hamburger" id="hamburger">
     ☰
@@ -46,12 +77,43 @@
 
 <!-- Mobile Sidebar -->
 <div class="sidebar" id="sidebar">
-  <a href="index.html">Početna</a>
-  <a href="indikacije.html">Juvelook & Lenisna</a>
-  <a href="rezultati.html">Rezultati</a>
-  <a href="tehnologija.html">Tehnologija</a>
-</div>
 
+  <a href="index.html">Početna</a>
+
+  <div class="sidebar-item">
+    <button class="sidebar-toggle">
+      Juvelook & Lenisna
+      <span class="arrow">▾</span>
+    </button>
+    <div class="sidebar-dropdown">
+      <a href="indikacije.html">Juvelook<br></a>
+      <a href="lenisna.html">Lenisna</a>
+    </div>
+  </div>
+
+  <div class="sidebar-item">
+    <button class="sidebar-toggle">
+      Rezultati
+      <span class="arrow">▾</span>
+    </button>
+    <div class="sidebar-dropdown">
+      <a href="#">Juvelook <br></a>
+      <a href="#">Lenisna</a>
+    </div>
+  </div>
+
+  <div class="sidebar-item">
+    <button class="sidebar-toggle">
+      Tehnologija
+      <span class="arrow">▾</span>
+    </button>
+    <div class="sidebar-dropdown">
+      <a href="inovacija.html">Šta je PDLLA <br></a>
+      <a href="tehnologija.html">Naša tehnologija</a>
+    </div>
+  </div>
+
+</div>
 <div class="overlay" id="overlay"></div>
 
 
@@ -71,7 +133,7 @@
   <div class="product-row">
     <div class="product-text">
       <h3 class="product-title">Napredni hibridni kolagen stimulatori.</h3>
-      <a href="#" class="product-btn">Saznaj više!</a>
+      <a href="indikacije.html" class="product-btn">Saznaj više o Juvelook-u!</a>
     </div>
     <div class="product-image">
       <img src="Prva_Slika.png" alt="Product">
@@ -82,7 +144,7 @@
   <div class="product-row reverse reveal">
     <div class="product-text">
   <h3 class="product-title">Povratite Vaš prirodni volumen</h3>
-  <a href="#" class="product-btn">Saznaj više!</a>
+  <a href="Lenisna.html" class="product-btn">Saznaj više o Lenisni!</a>
 </div>
     <div class="product-image">
       <img src="Druga_Slika.jpg" alt="Soprano Titanium laser system">
@@ -180,7 +242,7 @@
 
     <div class="container">
       <div class="img-before">
-        <img src="Before.png" alt="Before">
+        <img src="before.png" alt="Before">
       </div>
       <div class="img-after">
         <img src="After.png" alt="After">
@@ -237,4 +299,3 @@ Sada aktivno širimo naše poslovno područje i nastavićemo da promovišemo vis
 
 </body>
 </html>
-

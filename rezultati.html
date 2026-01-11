@@ -8,27 +8,58 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg">
-  <title>Juvelook & Lesina </title>
+  <link rel="icon" type="image/png" href="Logo.svg">
+  <title>Rezultati - Juvelook & Lenisna</title>
     </head>
     <body>
         <div id="loader">
             <div class="logo-wrapper">
-                <img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg" class="logo-outline">
+                <img src="Logo.svg" class="logo-outline">
                 <div class="logo-fill"></div>
             </div>
         </div>
 
         <!-- NAVBAR -->
         <nav class="navbar">
-          <strong><a href="index.html"><img src="https://juvelook.com/wp-content/uploads/2023/08/Frame-8.svg" alt="Logo"></a></strong>
+          <strong><a href="index.html"><img src="Logo.svg" alt="Logo"></a></strong>
 
 
           <div class="nav-links">
-            <a style="color: black;" href="indikacije.html">Indikacije</a>
-            <a style="color: black;" href="rezultati.html">Rezultati</a>
-            <a style="color: black;" href="bezbednost.html">Bezbednost</a>
-            <a style="color: black;" href="tehnologija.html">Tehnologija</a>
+            <a href="index.html">Početna</a>
+
+            <div class="nav-item">
+              <a href="#" class="nav-parent">
+                Juvelook & Lenisna
+                <span class="nav-arrow">▾</span>
+              </a>
+
+              <div class="dropdown">
+                <a href="indikacije.html">Juvelook</a>
+                <a href="lenisna.html">Lenisna</a>
+              </div>
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-parent">
+                Rezultati
+                <span class="nav-arrow">▾</span>
+              </a>
+
+              <div class="dropdown">
+                <a href="#">Juvelook</a>
+                <a href="#">Lenisna</a>
+              </div>
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-parent">
+                Tehnologija
+                <span class="nav-arrow">▾</span>
+              </a>
+
+              <div class="dropdown">
+                <a href="inovacija.html">Šta je PDLLA</a>
+                <a href="tehnologija.html">Naša tehnologija</a>
+              </div>
+            </div>
           </div>
 
           <div class="hamburger" id="hamburger">☰</div>
@@ -37,11 +68,42 @@
         <!-- Mobile Sidebar -->
         <div class="sidebar" id="sidebar">
 
-          <a href="indikacije.html">Indikacije</a>
-          <a href="rezultati.html">Rezultati</a>
-          <a href="bezbednost.html">Bezbednost</a>
-          <a href="tehnologija.html">Tehnologija</a>
-        </div>
+  <a href="index.html">Početna</a>
+
+  <div class="sidebar-item">
+    <button class="sidebar-toggle">
+      Juvelook & Lenisna
+      <span class="arrow">▾</span>
+    </button>
+    <div class="sidebar-dropdown">
+      <a href="indikacije.html">Juvelook<br></a>
+      <a href="lenisna.html">Lenisna</a>
+    </div>
+  </div>
+
+  <div class="sidebar-item">
+    <button class="sidebar-toggle active">
+      Rezultati
+      <span class="arrow">▾</span>
+    </button>
+    <div class="sidebar-dropdown">
+      <a href="#">Juvelook <br></a>
+      <a href="#">Lenisna</a>
+    </div>
+  </div>
+
+  <div class="sidebar-item">
+    <button class="sidebar-toggle">
+      Tehnologija
+      <span class="arrow">▾</span>
+    </button>
+    <div class="sidebar-dropdown">
+      <a href="inovacija.html">Šta je PDLLA <br></a>
+      <a href="tehnologija.html">Naša tehnologija</a>
+    </div>
+  </div>
+
+</div>
 
         <div class="overlay" id="overlay"></div>
 
@@ -52,6 +114,16 @@
 
 
 <script>
+
+  const currentPage = location.pathname.split("/").pop();
+
+  document.querySelectorAll("a[href]").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
+
 /* LOADER */
 (() => {
   const loader = document.getElementById("loader");
@@ -115,6 +187,47 @@
       setTimeout(() => loader.remove(), 700);
     }, 400);
   });
-})();</script>
+})();
+
+
+document.querySelectorAll('.sidebar-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const parent = toggle.parentElement;
+
+      // Close others
+      document.querySelectorAll('.sidebar-item').forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+
+      parent.classList.toggle('open');
+    });
+  });
+
+document.addEventListener("click", function (e) {
+  const navItems = document.querySelectorAll(".nav-item");
+
+  navItems.forEach(item => {
+    const link = item.querySelector("a");
+
+    // Click on nav link
+    if (link && link.contains(e.target)) {
+      e.preventDefault();
+
+      // Close other dropdowns
+      navItems.forEach(i => {
+        if (i !== item) i.classList.remove("open");
+      });
+
+      // Toggle this one
+      item.classList.toggle("open");
+    }
+  });
+
+  // Click outside → close all
+  if (!e.target.closest(".nav-item")) {
+    navItems.forEach(item => item.classList.remove("open"));
+  }
+});
+</script>
     </body>
 </html>
