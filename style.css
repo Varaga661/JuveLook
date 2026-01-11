@@ -1721,9 +1721,7 @@ a.active {
   }
 }
 
-a.active{
-  color: #4c94b5;
-}
+
 .sidebar a.active {
   color: #4c94b5;
 }
@@ -1837,3 +1835,4 @@ a.active{
 .sidebar-item.open .arrow {
   transform: rotate(180deg);
 }
+
